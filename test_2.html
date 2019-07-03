@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h2>계산기 연습</h2>
+    <div id="output"></div>
+    <script>
+        function getFirstValue(){
+            var num1 = Number(prompt("첫번째 숫자를 입력해주세요: "));
+            return num1
+        }
+
+        function getSecondValue(){
+            n = 2;
+            var num2 = Number(prompt(n + "번째 숫자를 입력해 주세요: "));
+            n++
+            return num2
+        }
+        
+        function getOperation(){
+            var op = prompt("연산자를 입력해주세요: ");
+            while(true){
+                if(op === "+" ||op === "-" ||op === "*" ||op === "/" ||op === "="){
+                    break;    
+                } else {
+                    alert("잘못입력하셨습니다.");
+                    break;
+                }
+                
+            }
+            return op;
+        }
+
+        function calculate(n1, n2, op){
+            var ret = "";
+            if(op === "+"){
+                ret = n1 + n2
+            } else if(op === "-"){
+                ret = n1 - n2
+            } else if(op === "*"){
+                ret = n1 * n2
+            } else if(op === "/"){
+                ret = n1 / n2
+            }
+            return ret;
+        }
+
+        function print(final){
+            result = "최종결과는" + final + "입니다.";
+            return result; 
+        }
+
+        function main(){
+            var n1 = getFirstValue();
+            while(true){
+                var op = getOperation();
+                if (op === "="){
+                    break;
+                }
+                var n2 = getSecondValue();
+                n1 = calculate(n1,n2,op)
+            }
+            var out = document.getElementById("output")
+            out.innerHTML = print(n1);
+        }
+        
+
+        main();
+    
+    
+    </script>
+    
+</body>
+</html>
