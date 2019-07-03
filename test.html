@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>테스트 코드</title>
+</head>
+<body>
+    <script>
+        function main() {
+            console.log("main 함수가 실행되었습니다.");
+            for(var n=2; n<=9; n++){ //몇단에 들어가는 숫자가 반복문으로 생성해서 dan에 넣음.
+                var dan = gugudan(n); /** 요게 잘 이해가 안감. 이게 gugudan쪽에 보낸건가? 왜 보내지? 어차피 계산은 출력이랑 같이 해도 되는데?
+                                       라고 생각했는데, 한 함수에 한가지일...이 생각나네. 그리고 구구단에 보냈다고 보기보다는 구구단에서 계산된 것을
+                                       받아와서 dan행렬에 넣는 것. 행렬이라면서 왜 괄호를 안하지? 이미 구구단쪽에서 행렬로 리턴했기 때문에 변수로만 받는것인듯**/
+                printResult(n, dan); //최종 출력물 위해 보내는 함수
+            }
+        }; //처음에는 왜 gugudan이랑 printdan가 앞에 나오는데 왜 뒤에다가 메인을
+        // 적나 했는데 다시 적으면서 보니까 앞에서 정의가 안됐는데 뒤에서 쓰는게 더 이상하구나
+        //어라리요... 맨 앞으로 가져와도 작동되네. 이런 JSP이녀석은 위아래도 없나?
+        //아 함수는 정의와 실행이 따로 존재하다보니. 정의를 다 해놓고 그것들을 바탕으로 진행되서 그런가보구나.
+
+        function gugudan(n){ //매개변수(property)에 들어가는 문구는 함수별 주고받을때는 뭐가 오든 상관없고, 내부에서만 통일되면 됨
+            var result = []; // 해당 행렬은 리턴해야되서 for문 바깥쪽에 배치
+            for (var i =1; i<=9; i++){ 
+                result[i] = n * i;   // result[i] <<여기서 i가 왜 들어가느냐에 고민하고 있었는데 없어도 되네?? 
+                                     // 헐쓰? 없애니까 콘솔에서 gugudan(5) 하면 45가 나와버림.
+                                     // 이게 행렬안에 들어가는 갯수 차이였구나... 
+            }
+            return result;
+        }
+
+        function printResult(n, dan) {
+            document.write("<h2>" + n + "단</h2>")
+            for (var i = 1; i <=9; i++){
+                var y = n * i;
+                document.write(n + " * " + i + " = " + y + "<br>");
+            }
+        }
+
+
+        main();
+
+    </script>
+</body>
+</html>
