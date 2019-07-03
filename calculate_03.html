@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+    첫번째 숫자: <input type="text" id="input1"><br>
+    사칙연산 입력란: <input type="text" id="input2" placeholder="ex:+,-,*,/"><br>
+    두번째 숫자:<input type="text" id="input3"><br>
+    <button onclick="calc()">확인</button>
+    </div>
+    <div id="output"></div>
+</body>
+    <script>
+        function calc(){
+            var input1 = document.getElementById("input1").value;
+            var input_calc = document.getElementById("input2").value;
+            var input3 = document.getElementById("input3").value;
+            
+            var n1 = Number(input1);
+            var n2 = Number(input3);
+
+            var str = "";
+
+            switch(input_calc) {
+                case "+":
+                str += "더하기: " + (n1 + n2) + "<br>";
+                break;
+                case "-":
+                str += "빼기: " + (n1 - n2) + "<br>";
+                break;
+                case "*":
+                str += "곱하기: " + (n1 * n2) + "<br>";
+                break;
+                case "/":
+                str += "나누기: " + (n1 / n2) + "<br>";
+                break;
+                default:
+                str += "잘못입력하셨습니다.";
+            }
+
+            var out = document.getElementById("output")
+            out.innerHTML = str;
+        }
+    </script>
+</html>
